@@ -1,6 +1,8 @@
 class StringCalculator {
   int add(String numbers) {
-    // TODO: Implement
+    if (numbers.isEmpty) {
+      return 0;
+    }
     throw UnimplementedError();
   }
 }
