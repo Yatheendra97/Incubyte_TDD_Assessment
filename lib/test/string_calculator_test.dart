@@ -18,6 +18,11 @@ void main() {
       expect(calculator.add('5'), equals(5));
     });
 
+    test('should return sum for two comma-separated numbers', () {
+      expect(calculator.add('1,5'), equals(6));
+      expect(calculator.add('2,3'), equals(5));
+    });
+
 
   });
 }
