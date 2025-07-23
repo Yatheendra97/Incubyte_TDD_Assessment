@@ -4,10 +4,21 @@ class StringCalculator {
       return 0;
     }
 
-    // Replace newlines with commas for uniform processing
-    String processedNumbers = numbers.replaceAll('\n', ',');
+    String delimiter = ',';
+    String numbersToProcess = numbers;
 
-    List<String> numberStrings = processedNumbers.split(',');
+    // Check for custom delimiter
+    if (numbers.startsWith('//')) {
+      int delimiterEndIndex = numbers.indexOf('\n');
+      delimiter = numbers.substring(2, delimiterEndIndex);
+      numbersToProcess = numbers.substring(delimiterEndIndex + 1);
+    }
+
+    // Replace newlines and custom delimiters with commas
+    numbersToProcess = numbersToProcess.replaceAll('\n', ',');
+    numbersToProcess = numbersToProcess.replaceAll(delimiter, ',');
+
+    List<String> numberStrings = numbersToProcess.split(',');
     return numberStrings
         .map((str) => int.parse(str))
         .fold(0, (sum, number) => sum + number);
