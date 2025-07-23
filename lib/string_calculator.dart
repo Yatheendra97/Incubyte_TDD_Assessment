@@ -3,13 +3,10 @@ class StringCalculator {
     if (numbers.isEmpty) {
       return 0;
     }
+
     List<String> numberStrings = numbers.split(',');
-    int sum = 0;
-
-    for (String numberString in numberStrings) {
-      sum += int.parse(numberString);
-    }
-
-    return sum;
+    return numberStrings
+        .map((str) => int.parse(str))
+        .fold(0, (sum, number) => sum + number);
   }
 }
