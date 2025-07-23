@@ -19,8 +19,15 @@ class StringCalculator {
     numbersToProcess = numbersToProcess.replaceAll(delimiter, ',');
 
     List<String> numberStrings = numbersToProcess.split(',');
-    return numberStrings
-        .map((str) => int.parse(str))
-        .fold(0, (sum, number) => sum + number);
+    List<int> numbers_list = numberStrings.map((str) => int.parse(str)).toList();
+
+    // Check for negative numbers
+    List<int> negatives = numbers_list.where((n) => n < 0).toList();
+    if (negatives.isNotEmpty) {
+      String negativeStr = negatives.join(', ');
+      throw ArgumentError('negative numbers not allowed: $negativeStr');
+    }
+
+    return numbers_list.fold(0, (sum, number) => sum + number);
   }
 }
