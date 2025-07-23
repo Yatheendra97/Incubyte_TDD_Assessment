@@ -28,6 +28,11 @@ void main() {
       expect(calculator.add('1,2,3,4,5'), equals(15));
     });
 
+    test('should handle newlines as delimiters', () {
+      expect(calculator.add('1\n2,3'), equals(6));
+      expect(calculator.add('1\n2\n3'), equals(6));
+    });
+
 
   });
 }
