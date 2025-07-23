@@ -23,6 +23,11 @@ void main() {
       expect(calculator.add('2,3'), equals(5));
     });
 
+    test('should handle multiple comma-separated numbers', () {
+      expect(calculator.add('1,2,3'), equals(6));
+      expect(calculator.add('1,2,3,4,5'), equals(15));
+    });
+
 
   });
 }
